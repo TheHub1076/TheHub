@@ -4,7 +4,7 @@
 local Executor=identifyexecutor();
 local SupportedExecutors={'Synapse X','ScriptWare','Krnl','Temple'};
 local Supported=table.find(SupportedExecutors,Executor)~=nil;
-assert(Supported,'Executor not supported');
+assert(Supported,'Executor Not Supported');
 
 local Key={...};
 local Password=Key[1];
@@ -13,26 +13,27 @@ setmetatable(Key,{__index=function()if DeveloperMode then return '';end;end;});-
 
 -->Init
 local Start,Is_Client_Loaded=os.time(),false,nil;
-local Ancestor,Connections,GUISettings,CurrentVersion,Ancestor_Loaded={MoneyDuping=false,DupeAxeBeforeModerationAction=false,ModerationAction='Kick',PlayerToModerate=game.Players.LocalPlayer,BaseToDupe=1,SelectedTreeType='Generic',BringTreeAmount=1},{},{NewDonateBase=false,Spook=false,WalkSpeed=16,JumpPower=50,HipHeight=0,SprintSpeed=20,FOV=70,SelectedPlot=1,InfiniteJump=false,SelectedDropType='Both',Light=false,SprintKey='LeftShift',NoclipKey='LeftControl',KeyTP='G',FastCheckout=false,FixCashierRange=false,HardDragger=false,AxeRangeActive=false,AxeSwingActive=false,FlyKey='F',WaterWalk=false,WaterFloat=true,FlySprintSpeed=10,AlwaysDay=false,AlwaysNight=false,NoFog=false,DisableSaving=true,AxeSwing=0,AxeRange=0,FastDeloader=true,IsClientFlying=false,Fling=false,FlySpeed=50,ActivateCarModifications=false,CarSpeed=1,CarPitch=1,AlertShutdown=false,AntiAFK=false},'v1.0.57-PreDVT',true;
+local Ancestor,Connections,GUISettings,CurrentVersion,Ancestor_Loaded={MoneyDuping=false,DupeAxeBeforeModerationAction=false,ModerationAction='Kick',PlayerToModerate=game.Players.LocalPlayer,BaseToDupe=1,SelectedTreeType='Generic',BringTreeAmount=1},{},{NewDonateBase=false,Spook=false,WalkSpeed=16,JumpPower=50,HipHeight=0,SprintSpeed=20,FOV=70,SelectedPlot=1,InfiniteJump=false,SelectedDropType='Both',Light=false,SprintKey='LeftShift',NoclipKey='LeftControl',KeyTP='G',FastCheckout=false,FixCashierRange=false,HardDragger=false,AxeRangeActive=false,AxeSwingActive=false,FlyKey='F',WaterWalk=false,WaterFloat=true,FlySprintSpeed=10,AlwaysDay=false,AlwaysNight=false,NoFog=false,DisableSaving=true,AxeSwing=0,AxeRange=0,FastDeloader=true,IsClientFlying=false,Fling=false,FlySpeed=50,ActivateCarModifications=false,CarSpeed=1,CarPitch=1,AlertShutdown=false,AntiAFK=false},loadstring(game:HttpGetAsync'https://ancestordevelopment.wtf/lua/Version.lua')(),true;
 
 -->GUI Main Function Variables
 local DupeMoneyQuantity,AutobuyAmount,AutobuySelectedItem=1,1,'BasicHatchet';
 
 -->Optimisation Shit 
-local RepStore,RunService,UIS,Players,Lighting,ScriptContext,PerformanceStats,TeleportService,HttpService=game:GetService'ReplicatedStorage',game:GetService'RunService',game:GetService'UserInputService',game:GetService'Players',game:GetService'Lighting',game:GetService'ScriptContext',game:GetService'Stats'.PerformanceStats,game:GetService'TeleportService',game:GetService'HttpService';
+local RepStore,RunService,UIS,Players,Lighting,ScriptContext,PerformanceStats,TeleportService,HttpService,MarketplaceService,VirtualUser=game:GetService'ReplicatedStorage',game:GetService'RunService',game:GetService'UserInputService',game:GetService'Players',game:GetService'Lighting',game:GetService'ScriptContext',game:GetService'Stats'.PerformanceStats,game:GetService'TeleportService',game:GetService'HttpService',game:GetService'MarketplaceService',game:GetService'VirtualUser';
 local LP,StarterGui=Players.LocalPlayer,game.StarterGui;
-local C_R,C_C,R_Module,hook_func,fwait,tdelay,lstring,Mouse,Stepped,cframe,vector3,wrkspc,gs,tstring,xp_call,p_call,instance,Heartbeat,Character,MFloor,gc=coroutine.resume,coroutine.create,require,hookfunction,task.wait,task.delay,loadstring,LP:GetMouse(),RunService.Stepped,CFrame,Vector3,workspace,getsenv,tostring,xpcall,pcall,Instance,RunService.Heartbeat,LP.Character,math.floor,getconnections;
+local C_R,C_C,R_Module,hook_func,fwait,tdelay,lstring,Mouse,Stepped,cframe,vector3,wrkspc,gs,tstring,xp_call,p_call,instance,Heartbeat,Character,MFloor,gc,setthreadidentity=coroutine.resume,coroutine.create,require,hookfunction,task.wait,task.delay,loadstring,LP:GetMouse(),RunService.Stepped,CFrame,Vector3,workspace,getsenv,tostring,xpcall,pcall,Instance,RunService.Heartbeat,LP.Character,math.floor,getconnections,set_thread_identity or setidentity or setthreadcontext or syn.set_thread_identity;
 local AxeNameLabel,AxeRangeLabel,AxeCooldownLabel;
 repeat Stepped:wait()until game:IsLoaded()and LP.PlayerGui:FindFirstChild'OnboardingGUI' and LP.PlayerGui.OnboardingGUI.DoOnboarding.Loaded.Value
 
 -->Game script environments
-local PropertyPurchasingClient,CharacterFloat,ClientBeBlacklisted,DonateClient,ObjectInteractionClient,UserInput,NPCChattingClient,LoadSaveClient=gs(LP.PlayerGui.PropertyPurchasingGUI.PropertyPurchasingClient),gs(LP.PlayerGui.Scripts.CharacterFloat),gs(LP.PlayerGui.BlackListGUI.ClientBeBlacklisted),gs(LP.PlayerGui.DonateGUI.DonateClient),gs(LP.PlayerGui.InteractionGUI.ObectInteractionClient),R_Module(LP.PlayerGui.Scripts.UserInput),gs(LP.PlayerGui.ChatGUI.NPCChattingClient),gs(LP.PlayerGui.LoadSaveGUI.LoadSaveClient);
+local PropertyPurchasingClient,CharacterFloat,ClientBeBlacklisted,DonateClient,ObjectInteractionClient,UserInput,NPCChattingClient,LoadSaveClient,NoticeClient=gs(LP.PlayerGui.PropertyPurchasingGUI.PropertyPurchasingClient),gs(LP.PlayerGui.Scripts.CharacterFloat),gs(LP.PlayerGui.BlackListGUI.ClientBeBlacklisted),gs(LP.PlayerGui.DonateGUI.DonateClient),gs(LP.PlayerGui.InteractionGUI.ObectInteractionClient),R_Module(LP.PlayerGui.Scripts.UserInput),gs(LP.PlayerGui.ChatGUI.NPCChattingClient),gs(LP.PlayerGui.LoadSaveGUI.LoadSaveClient),gs(LP.PlayerGui.NoticeGUI.NoticeClient);
 
 -->Old game functions
 local CharacterFloatOld,oldWalls,oldClientBeKicked=CharacterFloat.isInWater,ClientBeBlacklisted.makeWalls,ClientBeBlacklisted.checkIfPlayerNeedsToBeKicked;
 
 local ChatUI=LP.PlayerGui.ChatGUI.Chat;
 local LoadPass=getupvalue(LoadSaveClient.saveSlot,12);
+local whitelistedPlots={'68, 0, -189, 1, 0, 0, 0, 1, 0, 0, 0, 1','275, 0, -512, 1, 0, 0, 0, 1, 0, 0, 0, 1','383, 0, -250, 1, 0, 0, 0, 1, 0, 0, 0, 1'};
 
 -->Remotes
 local Client_May_Load,Donate,Request_Load,Request_Save,GetMetaData,ClientPurchasedProperty,ClientExpandedProperty,ClientRequestOwnership,ClientIsDragging,TestPing,PlayerChatted,SendUserNotice,ClientSetListPlayer,DestroyStructure,ClientInteracted,ClientPlacedBlueprint,ClientPlacedStructure,RemoteProxy,WipeMetaData,SayMessageRequest,ClientIsWhitelisted=RepStore.LoadSaveRequests.ClientMayLoad,RepStore.Transactions.ClientToServer.Donate,RepStore.LoadSaveRequests.RequestLoad,RepStore.LoadSaveRequests.RequestSave,RepStore.LoadSaveRequests.GetMetaData,RepStore.PropertyPurchasing.ClientPurchasedProperty,RepStore.PropertyPurchasing.ClientExpandedProperty,RepStore.Interaction.ClientRequestOwnership,RepStore.Interaction.ClientIsDragging,RepStore.TestPing,RepStore.NPCDialog.PlayerChatted,RepStore.Notices.SendUserNotice,RepStore.Interaction.ClientSetListPlayer,RepStore.Interaction.DestroyStructure,RepStore.Interaction.ClientInteracted,RepStore.PlaceStructure.ClientPlacedBlueprint,RepStore.PlaceStructure.ClientPlacedStructure,RepStore.Interaction.RemoteProxy,RepStore.LoadSaveRequests.WipeMetaData,RepStore.DefaultChatSystemChatEvents.SayMessageRequest,RepStore.Interaction.ClientIsWhitelisted;
@@ -43,21 +44,37 @@ local AxeFolder=RepStore.Purchasables.Tools.AllTools
 local BumpModule=R_Module(LP.PlayerGui.BumpButton);
 BumpModule.Bump=function()return true;end;
 
+--> Fixes Reloading With Disable Saving Enabled
+setupvalue(LoadSaveClient.loadSlot,12,true);
+
+--Fixed Random 'false' Notices
+Connections[#Connections+1]={Name='FalseFix',Function=Stepped:Connect(function()
+    if LP.PlayerGui.NoticeGUI.Notice.Main.TextLabel.Text=='false'then 
+        LP.PlayerGui.NoticeGUI.Notice.Visible=false;
+    end;
+end)};
+
 -->Re-Execution Dependancies
 getgenv().BaseDuping=false;
 if not getgenv().OldSelectLoad then
 local gc=getgc(true);
     for i=1,#gc do 
         local Function=gc[i];
-        if typeof(Function)=='function'and tostring(getfenv(Function).script)=='PropertyPurchasingClient'then 
-            if tostring(getinfo(Function).name)=='OnClientInvoke'then
+        if typeof(Function)=='function'and tstring(getfenv(Function).script)=='PropertyPurchasingClient'then 
+            if tstring(getinfo(Function).name)=='OnClientInvoke'then
                 getgenv().OldSelectLoad=Function;
             end;
         end;
     end;
 end;
 
-if not isfile('AncestorV2Configuration.cfg')then 
+--Lumber Tycoon 2 Updater Detection
+local LastUpdated,LastDumpedUpdate=MarketplaceService:GetProductInfo(game.PlaceId).Updated,lstring(game:HttpGetAsync'https://ancestordevelopment.wtf/lua/LastLT2Update.lua')();
+if LastUpdated~=LastDumpedUpdate then 
+    SendUserNotice:Fire'Lumber Tycoon 2 Updated. Use At Your Own Risk Or Wait For Ancestor To Verify Update!';
+end;
+
+if not isfile'AncestorV2Configuration.cfg'then 
     writefile('AncestorV2Configuration.cfg',HttpService:JSONEncode(GUISettings));
 end;
 
@@ -208,6 +225,7 @@ Connections[#Connections+1]={Name='Main',Function=Stepped:Connect(function()
     end);
 end)}]])(GUISettings,Stepped,Connections,UIS,Lighting,p_call,Ancestor,LP);
 
+--> Future Feature
 -- lstring([[
 -- local InteractionRange;
 -- local LP=LP;
@@ -255,13 +273,9 @@ function Ancestor:SaveSlotNames()
     SendUserNotice:Fire'Saved Slot Names';
 end;
 
-function Ancestor:SaveConfigurationFile()
-    writefile('AncestorV2Configuration.cfg',HttpService:JSONEncode(GUISettings));SendUserNotice:Fire'Saved Configuration File!';
-end;
+function Ancestor:SaveConfigurationFile()writefile('AncestorV2Configuration.cfg',HttpService:JSONEncode(GUISettings));SendUserNotice:Fire'Saved Configuration File!';end;
 
-function Ancestor:DeleteConfigurationFile()
-    delfile('AncestorV2Configuration.cfg');SendUserNotice:Fire'Deleted Configuration File!';
-end;
+function Ancestor:DeleteConfigurationFile()delfile('AncestorV2Configuration.cfg');SendUserNotice:Fire'Deleted Configuration File!';end;
 
 -->CS Antiban
 gs(LP.PlayerGui.LoadSaveGUI.LoadSaveClient.LocalScript).ban=function()return Ancestor:Notify('Ancestor','Ban Blocked')end;p_call(function()RepStore.Interaction.Ban:Destroy()warn'Antiban Loaded'end);
@@ -344,13 +358,13 @@ function Ancestor:GetItemInfo(SelectedItem,Type)
             local Item=Folder[i];
             local ItemName=Item:FindFirstChild'ItemName';
             if Type=='Name'then
-                if ItemName and ItemName.Value..' '==tostring(SelectedItem):split('-')[1] then 
+                if ItemName and ItemName.Value..' '==tstring(SelectedItem):split('-')[1] then 
                     AutobuySelectedItem=tstring(Item)
                     return tstring(Item);
                 end;
             end;
             if Type=='Price'then 
-                if tostring(Item)==tostring(SelectedItem)then 
+                if tstring(Item)==tstring(SelectedItem)then 
                     return tonumber(Item.Price.Value)*AutobuyAmount;
                 end;
             end;
@@ -360,40 +374,39 @@ function Ancestor:GetItemInfo(SelectedItem,Type)
 end;
 
 function Ancestor:GetStoreItems()
-    local Paths={game:GetService("ReplicatedStorage").Purchasables.Structures.HardStructures,game:GetService("ReplicatedStorage").Purchasables.Structures.BlueprintStructures,game:GetService("ReplicatedStorage").Purchasables.Other,game:GetService("ReplicatedStorage").Purchasables.Tools.AllTools,game:GetService("ReplicatedStorage").Purchasables.WireObjects,game:GetService("ReplicatedStorage").Purchasables.Vehicles};
-    local Items={'Basic Hatchet - $12','Rukiryaxe - $7400'};
-    local function Check(i,StoreItem)
-        if tstring(i)==tstring(StoreItem)then 
-            local ItemName=i:FindFirstChild'BoxItemName'or i:FindFirstChild'ItemName';
-            Items[#Items+1]=tstring(ItemName.Value..' - $'..i.Price.Value);
-        end;
-    end;
-    for i=1,#StoreChildren do 
-        local Store=StoreChildren[i];
-        if tstring(Store)=='ShopItems'then
-            local StoreItems=Store:GetChildren();
-            for i=1,#StoreItems do 
-                local StoreItem=StoreItems[i];
-                for i=1,#Paths do 
-                    local Folder=Paths[i]:GetChildren();
-                    for i=1,#Folder do 
-                        local Item=Folder[i];
-                        local ItemName=Item:FindFirstChild'ItemName';
-                        if ItemName and table.find(Items,tstring(ItemName.Value..' - $'..Item.Price.Value))==nil then 
-                            Check(Item,StoreItem)
-                        end;
-                    end;
-                end;
-            end;
-        end;
-    end;
-    return Items;
+    return lstring(game:HttpGetAsync'https://ancestordevelopment.wtf/lua/AutobuyList.lua')();
+    -- local Paths={game:GetService("ReplicatedStorage").Purchasables.Structures.HardStructures,game:GetService("ReplicatedStorage").Purchasables.Structures.BlueprintStructures,game:GetService("ReplicatedStorage").Purchasables.Other,game:GetService("ReplicatedStorage").Purchasables.Tools.AllTools,game:GetService("ReplicatedStorage").Purchasables.WireObjects,game:GetService("ReplicatedStorage").Purchasables.Vehicles};
+    -- local Items={'Basic Hatchet - $12','Rukiryaxe - $7400'};
+    -- local function Check(i,StoreItem)
+    --     if tstring(i)==tstring(StoreItem)then 
+    --         local ItemName=i:FindFirstChild'BoxItemName'or i:FindFirstChild'ItemName';
+    --         Items[#Items+1]=tstring(ItemName.Value..' - $'..i.Price.Value);
+    --     end;
+    -- end;
+    -- for i=1,#StoreChildren do 
+    --     local Store=StoreChildren[i];
+    --     if tstring(Store)=='ShopItems'then
+    --         local StoreItems=Store:GetChildren();
+    --         for i=1,#StoreItems do 
+    --             local StoreItem=StoreItems[i];
+    --             for i=1,#Paths do 
+    --                 local Folder=Paths[i]:GetChildren();
+    --                 for i=1,#Folder do 
+    --                     local Item=Folder[i];
+    --                     local ItemName=Item:FindFirstChild'ItemName';
+    --                     if ItemName and table.find(Items,tstring(ItemName.Value..' - $'..Item.Price.Value))==nil then 
+    --                         Check(Item,StoreItem)
+    --                     end;
+    --                 end;
+    --             end;
+    --         end;
+    --     end;
+    -- end;
+    -- return Items;
 end;
 
-function Ancestor:Donate(Amount,Recipient)
-    setupvalue(DonateClient.sendDonation,1,Recipient);setupvalue(DonateClient.sendDonation,3,Amount);
-    DonateClient.sendDonation();
-end;
+--Using this method leaves the clientside checks intact
+function Ancestor:Donate(Amount,Recipient)setupvalue(DonateClient.sendDonation,1,Recipient);setupvalue(DonateClient.sendDonation,3,Amount);DonateClient.sendDonation();end;
 
 function Ancestor:GetConnection(Connection,DisconnectConnection)
     for i=1,#Connections do 
@@ -409,13 +422,9 @@ function Ancestor:GetConnection(Connection,DisconnectConnection)
 end;
 
 -->Function library
-function Ancestor:GetClientMoney()
-    return LP.leaderstats.Money.Value;
-end;
+function Ancestor:GetClientMoney()return LP.leaderstats.Money.Value;end;
 
-function Ancestor:GetLoadedSlot()
-    return LP.CurrentSaveSlot.Value;
-end;
+function Ancestor:GetLoadedSlot()return LP.CurrentSaveSlot.Value;end;
 
 function Ancestor:UpdateAxeInfo()
     if not AxeNameLabel or not AxeRangeLabel or not AxeCooldownLabel then return end
@@ -444,19 +453,21 @@ function Ancestor:FixCashierRange(bool)
     end;
     local Cashiers=Ancestor:GetCashiers()
     Connections[#Connections+1]={Name='FixCashierRange',Function=Stepped:Connect(function()
-        local Min,NearestCashier=9e9,nil;
-        for i=1,#Cashiers do 
-            local Cashier=Cashiers[i];
-            if(LP.Character.Head.CFrame.p-Cashier.Head.CFrame.p).Magnitude<Min then 
-                NearestCashier=Cashier;
-                Min=(LP.Character.Head.CFrame.p-Cashier.Head.CFrame.p).Magnitude;
+        if Character and Character:FindFirstChild'Head'then
+            local Min,NearestCashier=9e9,nil;
+            for i=1,#Cashiers do 
+                local Cashier=Cashiers[i];
+                if(LP.Character.Head.CFrame.p-Cashier.Head.CFrame.p).Magnitude<Min then 
+                    NearestCashier=Cashier;
+                    Min=(LP.Character.Head.CFrame.p-Cashier.Head.CFrame.p).Magnitude;
+                end;
             end;
-        end;
-        if(LP.Character.Head.CFrame.p-NearestCashier.Head.CFrame.p).Magnitude<=10 then 
-            LP.PlayerGui.ChatGUI.PromptChat.PromptText.Text='Chat with '..tstring(NearestCashier)
-            NPCChattingClient.setPromptVisibility(true);
-        else
-            NPCChattingClient.setPromptVisibility(false);
+            if(LP.Character.Head.CFrame.p-NearestCashier.Head.CFrame.p).Magnitude<=10 then 
+                LP.PlayerGui.ChatGUI.PromptChat.PromptText.Text='Chat with '..tstring(NearestCashier)
+                NPCChattingClient.setPromptVisibility(true);
+            else
+                NPCChattingClient.setPromptVisibility(false);
+            end;
         end;
     end)};
 end;
@@ -471,7 +482,7 @@ end;
 
 function Ancestor:LoadSlot(Slot) 
     if not Ancestor:DoesSaveExist(Slot)then return end;
-    Ancestor:CanClientLoad();if Ancestor:GetLoadedSlot()~=-1 and not Ancestor.MoneyDuping then Ancestor:SaveSlot();Ancestor:FastDeload();end;
+    Ancestor:CanClientLoad();if Ancestor:GetLoadedSlot()~=-1 and not Ancestor.MoneyDuping and not GUISettings.DisableSaving then Ancestor:SaveSlot();Ancestor:FastDeload();end;
     C_R(C_C(function()Is_Client_Loaded=Request_Load:InvokeServer(Slot,LP)end));
     Connections[#Connections+1]={Name='ClientLoaded',Function=LP.CurrentlySavingOrLoading:GetPropertyChangedSignal'Value':Connect(function()
         if not LP.CurrentlySavingOrLoading.Value then
@@ -483,13 +494,9 @@ function Ancestor:LoadSlot(Slot)
     SendUserNotice:Fire('Loaded Slot '..tstring(Ancestor:GetLoadedSlot()),1);
 end;
 
-function Ancestor:SaveSlot()
-    Request_Save:InvokeServer(Ancestor:GetLoadedSlot(),LP);
-end;
+function Ancestor:SaveSlot()Request_Save:InvokeServer(Ancestor:GetLoadedSlot(),LP);end;
 
-function Ancestor:GiveBTools()
-    if LP.Backpack:FindFirstChildOfClass'HopperBin'then return end;for i=1,4 do instance.new('HopperBin',LP.Backpack).BinType=i;end;
-end;
+function Ancestor:GiveBTools()if LP.Backpack:FindFirstChildOfClass'HopperBin'then return end;for i=1,4 do instance.new('HopperBin',LP.Backpack).BinType=i;end;end;
 
 function Ancestor:Teleport(cf)
     repeat wait()until Character:FindFirstChild('HumanoidRootPart');
@@ -816,7 +823,6 @@ end;
 
 function Ancestor:GetFreeLand(Donate)
     local UnOwnedPlots={};
-    local whitelistedPlots={'68, 0, -189, 1, 0, 0, 0, 1, 0, 0, 0, 1','275, 0, -512, 1, 0, 0, 0, 1, 0, 0, 0, 1','383, 0, -250, 1, 0, 0, 0, 1, 0, 0, 0, 1'};
 	for i=1,#Plots do 
 		local Plot=Plots[i];
         if Plot.Owner.Value==nil then 
@@ -1003,7 +1009,7 @@ function Ancestor:ClaimAllFreePlots(MaxLand)
                 while Stepped:wait()do
                     Ancestor:MaxLand(Plot,true);
                     for i,v in next,Plot:GetChildren()do 
-                        if tostring(v)=='Square'then
+                        if tstring(v)=='Square'then
                             v:Destroy();
                         end;
                     end;
@@ -1021,11 +1027,23 @@ function Ancestor:DonateBase(NewMethod)
     if GUISettings.DisableSaving then return Ancestor:Notify('Ancestor','Disable slot saving to use this feature!')end;
     local Plot=Ancestor:GetPlayersBase();
     if Plot then SendUserNotice:Fire('Force unloading. next time don\'t use this while loaded.Please wait...')Ancestor:CanClientLoad();Request_Load:InvokeServer(-1,LP);end;
-    BaseDuping=true;
-    syn.set_thread_identity(2);
+	local Properties=workspace.Properties:GetChildren()
+	for i=1,#Properties do 
+	    local Property=Properties[i];
+		if Property.Owner.Value==nil then
+			if table.find(whitelistedPlots,tstring(Property.OriginSquare.OriginCFrame.Value))then
+                FoundPlot=true;
+			end;
+		end;
+	end;
+	if not FoundPlot then 
+	    return SendUserNotice:Fire'No Supported Plot Located!';
+	end;
+	BaseDuping=true;
+    setthreadidentity(2);
     C_R(C_C(function()
         Request_Load:InvokeServer(Ancestor.BaseToDupe)
-    end));syn.set_thread_identity(8);
+    end));setthreadidentity(8);
     if NewMethod then
         repeat Stepped:wait()until not LP.OwnsProperty.Value;
         Ancestor:FreeLand(true);
@@ -1043,8 +1061,8 @@ function Ancestor:DonateBase(NewMethod)
             Ancestor:Teleport(cframe.new(Plot.OriginSquare.CFrame.p+vector3.new(0,5,0)));
             repeat Stepped:wait()ClientIsDragging:FireServer(Plot)until Plot.Owner.Value==LP;
         end;
-        Ancestor:Teleport(cframe.new(OldPos));
     end;
+    Ancestor:Teleport(cframe.new(OldPos));
     SendUserNotice:Fire('Please wait. Ancestor Will Inform You When The Donation Has Completed.\n DO NOT LEAVE THE SERVER UNTIL THIS IS COMPLETE!');
     Ancestor:Teleport(cframe.new(Ancestor:GetPlayersBase().OriginSquare.CFrame.p+vector3.new(0,5,0)))
 	Ancestor:CanClientLoad();
@@ -1079,11 +1097,10 @@ function Ancestor:ResetCarSpeed()
 end;
 
 RepStore.PropertyPurchasing.SelectLoadPlot.OnClientInvoke=function(...)
-    syn.set_thread_identity(2);
+    setthreadidentity(2);
     if not BaseDuping then 
         return OldSelectLoad(...);
     end;
-    local whitelistedPlots={'68, 0, -189, 1, 0, 0, 0, 1, 0, 0, 0, 1','275, 0, -512, 1, 0, 0, 0, 1, 0, 0, 0, 1','383, 0, -250, 1, 0, 0, 0, 1, 0, 0, 0, 1'};
 	local Properties=workspace.Properties:GetChildren()
 	for i=1,#Properties do 
 	    local Property=Properties[i];
@@ -1093,7 +1110,7 @@ RepStore.PropertyPurchasing.SelectLoadPlot.OnClientInvoke=function(...)
 			end;
 		end;
 	end;
-    syn.set_thread_identity(8);
+    setthreadidentity(8);
 end;
 
 function Ancestor:GetPlotButtonByID(ID)
@@ -1109,12 +1126,13 @@ function Ancestor:GetPlotButtonByID(ID)
         end;
     end;
 end;
-
+local CorrectThread=false;
 C_R(C_C(function()
-    syn.set_thread_identity(2)
+    setthreadidentity(2)
     LoadSaveClient.openList();
     LoadSaveClient.exitAll();
-    syn.set_thread_identity(8)
+    setthreadidentity(8)
+    CorrectThread=true;
     for i=1,6 do 
         local Base=Ancestor:GetPlotButtonByID(i);
         Base.TextScaled=true;
@@ -1776,8 +1794,8 @@ function Ancestor:GetBestAxe()
         end;
     end;
     for Index,Axe in next,Axes do
-        if Axe:FindFirstChild'ToolName'and AxeFolder:FindFirstChild(tostring(Axe.ToolName.Value))then 
-            stats=require(AxeFolder:FindFirstChild(tostring(Axe.ToolName.Value)).AxeClass).new();       
+        if Axe:FindFirstChild'ToolName'and AxeFolder:FindFirstChild(tstring(Axe.ToolName.Value))then 
+            stats=require(AxeFolder:FindFirstChild(tstring(Axe.ToolName.Value)).AxeClass).new();       
             if stats.SpecialTrees then 
                 if stats.SpecialTrees[Ancestor.SelectedTreeType]then
                     return Axe;
@@ -1940,8 +1958,8 @@ function Ancestor:Fling()
     GUISettings.Noclip=false;
 end;
 
-
-local AncestorUI=loadstring(game:HttpGetAsync'https://ancestordevelopment.wtf/lua/AncestorV2.lua')():Initiate();
+repeat Stepped:Wait()until CorrectThread;
+local AncestorUI=lstring(game:HttpGetAsync'https://ancestordevelopment.wtf/lua/AncestorV2.lua')():Initiate();
 local LocalPlayerTab=AncestorUI:CreateTab(5181994100,'LocalPlayer');
 local HumanoidSectionTab=LocalPlayerTab:CreateSection()
 local HumanoidSection=HumanoidSectionTab:CreateSubSection('Humanoid Options');
@@ -1963,6 +1981,7 @@ end,Enum.KeyCode.G,true,'Binds A Key For Teleportion');
 HumanoidSection:CreateToggle('Infinite Jump',false,function(toggle)GUISettings.InfiniteJump=toggle;end,GUISettings.InfiniteJump,true,'Allows You To Jump Indefinitely.');
 HumanoidSection:CreateToggle('Light',false,function(toggle)GUISettings.Light=toggle;Ancestor:ApplyLight();end,GUISettings.Light,true,'Applies A Light To Your Character\'s Head.');
 HumanoidSection:CreateToggle('Fling',false,function(toggle)GUISettings.Fling=toggle;if toggle then Ancestor:Fling()end;end,GUISettings.Fling,true,'Rotates You Violently To Fling Items/Players.');
+-- HumanoidSection:CreateToggle('Dance Stroke',false,function(toggle)GUISettings.Fling=toggle;if toggle then Ancestor:Fling()end;end,GUISettings.Fling,true,'Rotates You Violently To Fling Items/Players.');
 HumanoidSection:CreateButton('Safe Suicide',function()Ancestor:SafeSuicide();end,true,true,'Kills Your Character But Keeps Your Axes.');
 local CameraSection=HumanoidSectionTab:CreateSubSection('Camera Options');
 local FOVSlider=CameraSection:CreateSlider('FOV',function(FOV)GUISettings.FOV=FOV;wrkspc.CurrentCamera.FieldOfView=FOV;end,1,120,GUISettings.FOV,true,'Changes Your Camera\'s FOV.');
@@ -1973,13 +1992,13 @@ MiscSection:CreateButton('BTools',function()Ancestor:GiveBTools();end,true,true,
 MiscSection:CreateButton('Rejoin Game',function()TeleportService:TeleportToPlaceInstance(game.PlaceId,game.JobId,LP);end,true,true,'Rejoins The Current Server You\'re Playing In.');
 local TeleportSection=HumanoidSectionTab:CreateSubSection();
 TeleportSection:CreateTitle('Teleport To Location')
-TeleportSection:CreateDropDown(function(Location)if Location=='Wood R Us'then Ancestor:Teleport(cframe.new(270,4,60));elseif Location=='Spawn'then Ancestor:Teleport(cframe.new(174,10.5,66));elseif Location=='Land Store'then Ancestor:Teleport(cframe.new(270,3,-98));elseif Location=='Bridge'then Ancestor:Teleport(cframe.new(112,37,-892));elseif Location=='Dock'then Ancestor:Teleport(cframe.new(1136,0,-206));elseif Location=='Palm'then Ancestor:Teleport(cframe.new(2614,-4,-34));elseif Location=='Cave'then Ancestor:Teleport(cframe.new(3590,-177,415));elseif Location=='Volcano'then Ancestor:Teleport(cframe.new(-1588,623,1069));elseif Location=='Swamp'then Ancestor:Teleport(cframe.new(-1216,131,-822));elseif Location=='Fancy Furnishings'then Ancestor:Teleport(cframe.new(486,3,-1722));elseif Location=='Boxed Cars'then Ancestor:Teleport(cframe.new(509,3,-1458));elseif Location=='Ice Mountain'then Ancestor:Teleport(cframe.new(1487,415,3259));elseif Location=='Links Logic'then Ancestor:Teleport(cframe.new(4615,7,-794));elseif Location=='Bob\'s Shack'then Ancestor:Teleport(cframe.new(292,8,-2544));elseif Location=='Fine Arts Store'then Ancestor:Teleport(cframe.new(5217,-166,721));elseif Location=='Shrine Of Sight'then Ancestor:Teleport(cframe.new(-1608,195,928));elseif Location=='Strange Man'then Ancestor:Teleport(cframe.new(1071,16,1141));elseif Location=='Volcano Win'then Ancestor:Teleport(cframe.new(-1667,349,1474));elseif Location=='Ski Lodge'then Ancestor:Teleport(cframe.new(1244,59,2290));elseif Location=='Fur Wood'then Ancestor:Teleport(cframe.new(-1080,-5,-942));elseif Location=='The Den'then Ancestor:Teleport(cframe.new(330,45,1943));end;end,{'Spawn','Wood R Us','Land Store','Bridge','Dock','Palm','Cave','The Den','Volcano','Swamp','Fancy Furnishings','Boxed Cars','Links Logic','Bobs Shack','Fine Arts Store','Ice Mountain','Shrine Of Sight','Strange Man','Volcano Win','Ski Lodge','Fur Wood'},false,true);
+TeleportSection:CreateDropDown(function(Location)if Location=='Wood R Us'then Ancestor:Teleport(cframe.new(270,4,60));elseif Location=='Spawn'then Ancestor:Teleport(cframe.new(174,10.5,66));elseif Location=='Land Store'then Ancestor:Teleport(cframe.new(270,3,-98));elseif Location=='Bridge'then Ancestor:Teleport(cframe.new(112,37,-892));elseif Location=='Dock'then Ancestor:Teleport(cframe.new(1136,0,-206));elseif Location=='Palm'then Ancestor:Teleport(cframe.new(2614,-4,-34));elseif Location=='Cave'then Ancestor:Teleport(cframe.new(3590,-177,415));elseif Location=='Volcano'then Ancestor:Teleport(cframe.new(-1588,623,1069));elseif Location=='Swamp'then Ancestor:Teleport(cframe.new(-1216,131,-822));elseif Location=='Fancy Furnishings'then Ancestor:Teleport(cframe.new(486,3,-1722));elseif Location=='Boxed Cars'then Ancestor:Teleport(cframe.new(509,3,-1458));elseif Location=='Ice Mountain'then Ancestor:Teleport(cframe.new(1487,415,3259));elseif Location=='Links Logic'then Ancestor:Teleport(cframe.new(4615,7,-794));elseif Location=='Bob\'s Shack'then Ancestor:Teleport(cframe.new(292,8,-2544));elseif Location=='Fine Arts Store'then Ancestor:Teleport(cframe.new(5217,-166,721));elseif Location=='Shrine Of Sight'then Ancestor:Teleport(cframe.new(-1608,195,928));elseif Location=='Strange Man'then Ancestor:Teleport(cframe.new(1071,16,1141));elseif Location=='Volcano Win'then Ancestor:Teleport(cframe.new(-1667,349,1474));elseif Location=='Ski Lodge'then Ancestor:Teleport(cframe.new(1244,59,2290));elseif Location=='Fur Wood'then Ancestor:Teleport(cframe.new(-1080,-5,-942));elseif Location=='The Den'then Ancestor:Teleport(cframe.new(330,45,1943));end;end,{'Spawn','Wood R Us','Land Store','Bridge','Dock','Palm','Cave','The Den','Volcano','Swamp','Fancy Furnishings','Boxed Cars','Links Logic','Bobs Shack','Fine Arts Store','Ice Mountain','Shrine Of Sight','Strange Man','Volcano Win','Ski Lodge','Fur Wood'},'Spawn',false);
 TeleportSection:CreateTitle('Teleport To Player')
 TeleportSection:CreateDropDown(function(Player)
     if not Players:FindFirstChild(Player)then 
         return Ancestor:Notify('Error','Player Not Found!');
     end;Ancestor:Teleport(cframe.new(Players[Player].Character.HumanoidRootPart.CFrame.p+vector3.new(0,5,0)));
-end,{},true);
+end,{},false,true);
 TeleportSection:CreateTitle'Teleport To Player\'s Base';
 TeleportSection:CreateDropDown(function(Player)
     if not Players:FindFirstChild(Player)then 
@@ -1988,7 +2007,7 @@ TeleportSection:CreateDropDown(function(Player)
     xp_call(function()
         Ancestor:Teleport(cframe.new(Ancestor:GetPlayersBase(Players[Player]).OriginSquare.CFrame.p+vector3.new(0,5,0)));
     end,function()Ancestor:Notify('Error','Player Has No Plot!');end);
-end,{},true);
+end,{},false,true);
 
 local GamePlayerTab=AncestorUI:CreateTab(6894662531,'Game Options');
 local GameSectionTab=GamePlayerTab:CreateSection()
@@ -2033,16 +2052,16 @@ local ModeratePlayer=OtherPlayerSection:CreateSubSection('Troll Options');
 
 ModeratePlayer:CreateDropDown(function(Option)
     Ancestor.ModerationAction=Option;
- end,{'Kick','Kill','Hard Kill','Bring','Fling'},false);
+ end,{'Kick','Kill','Hard Kill','Bring','Fling'},'Kick');
 
  ModeratePlayer:CreateDropDown(function(Player)
    Ancestor.PlayerToModerate=Players[tstring(Player)]
-end,{},true);
+end,{},false,true);
 ModeratePlayer:CreateToggle('Dupe Axe',false,function(state)Ancestor.DupeAxeBeforeModerationAction=state;end,false,true,'Duplicates Your Inventory Before Performing Action.');
 ModeratePlayer:CreateButton('Perform Action',function()Ancestor:ModeratePlayer(Ancestor.ModerationAction);end,true,true,'Performs The Selected Action Against The Selected Player.');
 local ServerOptions=OtherPlayerSection:CreateSubSection('Server Options');
 ServerOptions:CreateToggle('Alert Server Killer(Toxic)',false,function(state)GUISettings.AlertShutdown=state;end,GUISettings.AlertShutdown,true,'Alerts Every Player In The Server That You\'re Going To Kill It.');
-ServerOptions:CreateButton('Kill Server',function()if GUISettings.AlertShutdown then SayMessageRequest:FireServer('NUKING SERVER IN 3 ','All')for i=2,1,-1 do task.wait(1)SayMessageRequest:FireServer(tstring(i),'All')end;end;SayMessageRequest:FireServer('NICE KNOWING YOU BOZOS!!!!','All')Ancestor:ClaimAllFreePlots(true)end,true,true,'This Will Literally Kill The Server. No Joke.');
+ServerOptions:CreateButton('Kill Server',function()if AncestorUI:CreateOption()then if GUISettings.AlertShutdown then SayMessageRequest:FireServer('NUKING SERVER IN 3 ','All')for i=2,1,-1 do task.wait(1)SayMessageRequest:FireServer(tstring(i),'All');end;SayMessageRequest:FireServer('NICE KNOWING YOU BOZOS!!!!','All')end;Ancestor:ClaimAllFreePlots(true)else SendUserNotice:Fire'Kill Server Aborted'end;end,true,true,'This Will Literally Kill The Server. No Joke.');
 local PlotTab=AncestorUI:CreateTab(8772257496,'Plot Options');
 local PlotSection=PlotTab:CreateSection()
 local LoadSection=PlotSection:CreateSubSection('Load Options');
@@ -2053,7 +2072,7 @@ if SlotNames.Slot1~='Slot 1'then
 end;
 LoadSection:CreateButton('Load Selected Slot',function()Ancestor:LoadSlot(GUISettings.SelectedPlot);end,true,true,'Loads The Selected Slot.');
 LoadSection:CreateButton('Unload Selected Slot',function()Request_Save:InvokeServer(Ancestor:GetLoadedSlot())Ancestor:CanClientLoad();Ancestor:FastDeload()Request_Load:InvokeServer(-1,LP)Ancestor:Set(-1);end,true,true,'Unloads The Current Slot.');
-LoadSection:CreateButton('Delete Selected Slot',function()Ancestor:DeleteSlot(GUISettings.SelectedPlot)end,true,true,'Deletes The Selected Slot.');
+LoadSection:CreateButton('Delete Selected Slot',function()if AncestorUI:CreateOption()then Ancestor:DeleteSlot(GUISettings.SelectedPlot)else SendUserNotice:Fire'Delete Slot Aborted'end;end,true,true,'Deletes The Selected Slot.');
 LoadSection:CreateButton('Save Selected Slot',function()Ancestor:SaveSlot();end,true,true,'Saves The Current Loaded Slot.');
 local PlotInfoSection=PlotSection:CreateSubSection('Plot Information');
 local SlotName,Slot1,Slot2,Slot3,Slot4,Slot5,Slot6;
@@ -2073,7 +2092,7 @@ PlotInfoSection:CreateDropDown(function(Player)
         Slot5:UpdateText('Slot 5 Datasize: '..tstring(Data[5]~=nil and Data[5] or '0'));
         Slot6:UpdateText('Slot 6 Datasize: '..tstring(Data[6]~=nil and Data[6] or '0'));
     end));
-end,{},true);
+end,{},false,true);
 C_R(C_C(function()
     SlotName=PlotInfoSection:CreateTitle('Showing Info for '..tstring(LP))
     local Data=Ancestor:GetPlayersSlotInfo(LP)
@@ -2114,7 +2133,7 @@ BringTreeSection:CreateDropDown(function(Option)
         Title='Trees';
     end;
     BringTreeButton:UpdateHeader('Bring '..Ancestor.BringTreeAmount..' '..Ancestor.SelectedTreeType..' '..Title)
-end,{'Generic','GoldSwampy','CaveCrawler','Cherry','Frost','Volcano','Oak','Walnut','Birch','SnowGlow','Pine','GreenSwampy','Koa','Palm','Spooky','SpookyNeon',--[['LoneCave']]},false);
+end,{'Generic','GoldSwampy','CaveCrawler','Cherry','Frost','Volcano','Oak','Walnut','Birch','SnowGlow','Pine','GreenSwampy','Koa','Palm','Spooky','SpookyNeon',--[['LoneCave']]},'Generic',false);
 BringTreeSection:CreateSlider('Quantity',function(Quantity)Ancestor.BringTreeAmount=Quantity;if Quantity<=1 then Title='Tree';else Title='Trees';end;BringTreeButton:UpdateHeader('Bring '..Ancestor.BringTreeAmount..' '..Ancestor.SelectedTreeType..' '..Title);end,1,10,1,false,nil);
 BringTreeButton=BringTreeSection:CreateButton('Bring 1 Generic Tree',function()Ancestor:BringTree();end,true,true,'Brings The Selected Amount Of The Selected Tree To You.');
 -- local BuildSection=PlotSection:CreateSubSection('Save/Build Options');
@@ -2129,7 +2148,7 @@ DraggingOptions:CreateToggle('Hard Dragger',false,function(state)GUISettings.Har
 local MoneyTab=AncestorUI:CreateTab(5182389716,'Money Options');
 local MoneySection=MoneyTab:CreateSection()
 local Autobuy=MoneySection:CreateSubSection('Autobuy');
-Autobuy:CreateDropDown(function(item)Ancestor:GetItemInfo(item,'Name')end,{unpack(Ancestor:GetStoreItems())});
+Autobuy:CreateDropDown(function(item)Ancestor:GetItemInfo(item,'Name')end,{unpack(Ancestor:GetStoreItems())},'Basic Hatchet - $12',false);
 Autobuy:CreateSlider('Amount',function(Quantity)AutobuyAmount=Quantity;end,1,100);
 Autobuy:CreateButton('Purchase Item/s',function()Ancestor:AutobuyItems();end,true,true,'Auto-Buys The Selected Items.');
 local DupeMoney=MoneySection:CreateSubSection('Money Duplication');
@@ -2173,6 +2192,8 @@ CarMods:CreateToggle('Activate Car Modifications',false,function(toggle)GUISetti
 
 local SettingsMain=AncestorUI:CreateTab(5182003557,'Settings');
 local SettingsSection=SettingsMain:CreateSection();
+local Credits=SettingsSection:CreateSubSection('Credits');
+Credits:CreateLabel'Made By Ancestor';
 local GUIInfo=SettingsSection:CreateSubSection('GUI Information');
 GUIInfo:CreateLabel('Version: '..tstring(CurrentVersion));
 GUIInfo:CreateLabel('Executor: '..tstring(Executor));
@@ -2189,7 +2210,6 @@ end)}
 local ConfigurationSettings=SettingsSection:CreateSubSection('Configuration Settings');
 ConfigurationSettings:CreateButton('Save Configuration',function()Ancestor:SaveConfigurationFile()end,true,true,'Saves Your Confiuration File');
 ConfigurationSettings:CreateButton('Delete Configuration',function()Ancestor:DeleteConfigurationFile()end,true,true,'Deletes Your Confiuration File');
-ConfigurationSettings:CreateToggle('Auto-Save Configuration On Close',false,function(toggle)end,false,true,'Auto-Saves Configuration When Ancestor Is Closed');
 local PlotNameSettings=SettingsSection:CreateSubSection('Plot Name Settings');
 PlotNameSettings:CreateTextbox('Slot 1 Name',function(Name)SlotNames.Slot1=Name;Ancestor:GetPlotButtonByID(1).Text=Name;end,SlotNames.Slot1,false,true,'Renames Slot 1 To Your Preferred Name.',true);
 PlotNameSettings:CreateTextbox('Slot 2 Name',function(Name)SlotNames.Slot2=Name;Ancestor:GetPlotButtonByID(2).Text=Name;end,SlotNames.Slot2,false,true,'Renames Slot 2 To Your Preferred Name.',true);
@@ -2207,8 +2227,8 @@ Settings:CreateTitle('Dropdown Name Settings')
 Settings:CreateDropDown(function(Type)
    PlayerDropType=Type;
    GUISettings.SelectedDropType=Type;
-   PlayerDropType= GUISettings.SelectedDropType
-end,{'Both','DisplayName','UserName'});
+   PlayerDropType=GUISettings.SelectedDropType
+end,{'Both','DisplayName','UserName'},GUISettings.SelectedDropType);
 Connections[#Connections+1]={Name='DestroyedGUI',Function=game.CoreGui.ChildRemoved:Connect(function(Child)
     if tstring(Child)=='Ancestor'then
         Ancestor_Loaded=false;
