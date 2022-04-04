@@ -70,6 +70,8 @@ end;
 
 --Lumber Tycoon 2 Updater Detection
 local LastUpdated,LastDumpedUpdate=MarketplaceService:GetProductInfo(game.PlaceId).Updated,lstring(game:HttpGetAsync'https://ancestordevelopment.wtf/lua/LastLT2Update.lua')();
+
+-- setclipboard(tstring(LastUpdated));
 if LastUpdated~=LastDumpedUpdate then 
     SendUserNotice:Fire'Lumber Tycoon 2 Updated. Use At Your Own Risk Or Wait For Ancestor To Verify Update!';
 end;
@@ -375,6 +377,8 @@ end;
 
 function Ancestor:GetStoreItems()
     return lstring(game:HttpGetAsync'https://ancestordevelopment.wtf/lua/AutobuyList.lua')();
+    --Manual Dumper
+
     -- local Paths={game:GetService("ReplicatedStorage").Purchasables.Structures.HardStructures,game:GetService("ReplicatedStorage").Purchasables.Structures.BlueprintStructures,game:GetService("ReplicatedStorage").Purchasables.Other,game:GetService("ReplicatedStorage").Purchasables.Tools.AllTools,game:GetService("ReplicatedStorage").Purchasables.WireObjects,game:GetService("ReplicatedStorage").Purchasables.Vehicles};
     -- local Items={'Basic Hatchet - $12','Rukiryaxe - $7400'};
     -- local function Check(i,StoreItem)
@@ -405,7 +409,7 @@ function Ancestor:GetStoreItems()
     -- return Items;
 end;
 
---Using this method leaves the clientside checks intact
+--Using this method leaves the clientside checks intact. Meaning no donation timeouts with no money being sent at all.
 function Ancestor:Donate(Amount,Recipient)setupvalue(DonateClient.sendDonation,1,Recipient);setupvalue(DonateClient.sendDonation,3,Amount);DonateClient.sendDonation();end;
 
 function Ancestor:GetConnection(Connection,DisconnectConnection)
@@ -499,7 +503,7 @@ function Ancestor:SaveSlot()Request_Save:InvokeServer(Ancestor:GetLoadedSlot(),L
 function Ancestor:GiveBTools()if LP.Backpack:FindFirstChildOfClass'HopperBin'then return end;for i=1,4 do instance.new('HopperBin',LP.Backpack).BinType=i;end;end;
 
 function Ancestor:Teleport(cf)
-    repeat wait()until Character:FindFirstChild('HumanoidRootPart');
+    repeat Stepped:wait()until Character:FindFirstChild('HumanoidRootPart');
     xp_call(function()
         Character.Humanoid.SeatPart.Parent:SetPrimaryPartCFrame(cf*CFrame.Angles(math.rad(Character.Humanoid.SeatPart.Parent.PrimaryPart.Orientation.X),math.rad(Character.Humanoid.SeatPart.Parent.PrimaryPart.Orientation.Y),math.rad(Character.Humanoid.SeatPart.Parent.PrimaryPart.Orientation.Z)));
     end,function()
@@ -512,6 +516,195 @@ function Ancestor:SafeSuicide()
         Character.Head:Destroy();
     end,function()Ancestor:Notify('Ancestor','Character is already dead')end);
 end;
+
+function Ancestor:Clock()
+    if game.CoreGui:FindFirstChild'Stats'then 
+        game.CoreGui:FindFirstChild'Stats':remove();
+    end;
+    local color1=Color3.fromRGB(15,15,15);
+    local color2=Color3.fromRGB(255,255,255);
+    local Stats=Instance.new('ScreenGui');
+    local FPSFrame=Instance.new('Frame');
+    local UICorner=Instance.new('UICorner');
+    local f1=Instance.new('Frame');
+    local f2=Instance.new('Frame');
+    local FPS=Instance.new('TextLabel');
+    local TimeFrame=Instance.new('Frame');
+    local UICorner_2=Instance.new('UICorner');
+    local f1_2=Instance.new('Frame');
+    local f2_2=Instance.new('Frame');
+    local Time=Instance.new('TextLabel');
+    local DateFrame=Instance.new('Frame');
+    local Date=Instance.new('TextLabel');
+    local f2_3=Instance.new('Frame');
+    local f1_3=Instance.new('Frame');
+    local UICorner_3=Instance.new('UICorner');
+    Stats.Name='Stats';
+    Stats.Parent=game.CoreGui
+    Stats.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;
+    FPSFrame.Name='FPSFrame';
+    FPSFrame.Parent=Stats;
+    FPSFrame.Size=UDim2.new(0,40,0,20);
+    FPSFrame.Position=UDim2.new(1,-40,1,-60);
+    FPSFrame.BorderSizePixel=0;
+    FPSFrame.BackgroundColor3=color1;
+    UICorner.Name='UICorner';
+    UICorner.Parent=FPSFrame;
+    UICorner.CornerRadius=UDim.new(0,6);
+    f1.Name='f1';
+    f1.Parent=FPSFrame;
+    f1.Size=UDim2.new(1,0,0,6);
+    f1.Position=UDim2.new(0,0,1,-6);
+    f1.BorderSizePixel=0;
+    f1.BackgroundColor3=color1;
+    f2.Name='f2';
+    f2.Parent=FPSFrame;
+    f2.Size=UDim2.new(0,6,1,0);
+    f2.Position=UDim2.new(1,-6,0,0);
+    f2.BorderSizePixel=0;
+    f2.BackgroundColor3=color1;
+    FPS.Name='FPS';
+    FPS.Parent=FPSFrame;
+    FPS.TextWrapped=true;
+    FPS.ZIndex=2;
+    FPS.BorderSizePixel=0;
+    FPS.BackgroundColor3=Color3.fromRGB(255,255,255);
+    FPS.Size=UDim2.new(1,-2,1,0);
+    FPS.TextSize=14.000;
+    FPS.Text='222';
+    FPS.TextColor3=color2;
+    FPS.Font=Enum.Font.GothamSemibold;
+    FPS.Position=UDim2.new(0,2,0,0);
+    FPS.BackgroundTransparency=1.000;
+    TimeFrame.Name='TimeFrame';
+    TimeFrame.Parent=Stats;
+    TimeFrame.Size=UDim2.new(0,73,0,20);
+    TimeFrame.Position=UDim2.new(1,-73,1,-40);
+    TimeFrame.BorderSizePixel=0;
+    TimeFrame.BackgroundColor3=color1;
+    UICorner_2.Name='UICorner';
+    UICorner_2.Parent=TimeFrame;
+    UICorner_2.CornerRadius=UDim.new(0,6);
+    f1_2.Name='f1';
+    f1_2.Parent=TimeFrame;
+    f1_2.Size=UDim2.new(1,0,0,6);
+    f1_2.Position=UDim2.new(0,0,1,-6);
+    f1_2.BorderSizePixel=0;
+    f1_2.BackgroundColor3=color1;
+    f2_2.Name='f2';
+    f2_2.Parent=TimeFrame;
+    f2_2.Size=UDim2.new(0,6,1,0);
+    f2_2.Position=UDim2.new(1,-6,0,0);
+    f2_2.BorderSizePixel=0;
+    f2_2.BackgroundColor3=color1;
+    Time.Name='Time';
+    Time.Parent=TimeFrame;
+    Time.TextWrapped=true;
+    Time.ZIndex=2;
+    Time.BorderSizePixel=0;
+    Time.BackgroundColor3=Color3.fromRGB(255,255,255);
+    Time.Size=UDim2.new(1,-2,1,0);
+    Time.TextSize=14.000;
+    Time.Text=os.date'%I:%M:%S';
+    Time.TextColor3=color2;
+    Time.Font=Enum.Font.GothamSemibold;
+    Time.Position=UDim2.new(0,2,0,0);
+    Time.BackgroundTransparency=1.000;
+    DateFrame.Name='DateFrame';
+    DateFrame.Parent=Stats;
+    DateFrame.Size=UDim2.new(0,100,0,20);
+    DateFrame.Position=UDim2.new(1,-100,1,-20);
+    DateFrame.BorderSizePixel=0;
+    DateFrame.BackgroundColor3=color1;
+    Date.Name='Date';
+    Date.Parent=DateFrame;
+    Date.TextWrapped=true;
+    Date.ZIndex=2;
+    Date.BorderSizePixel=0;
+    Date.BackgroundColor3=Color3.fromRGB(255,255,255);
+    Date.Size=UDim2.new(1,-2,1,0);
+    Date.TextSize=14.000;
+    Date.Text='Tues, March 10th';
+    Date.TextColor3=color2;
+    Date.Font=Enum.Font.GothamSemibold;
+    Date.Position=UDim2.new(0,2,0,0);
+    Date.BackgroundTransparency=1.000;
+    f2_3.Name='f2';
+    f2_3.Parent=DateFrame;
+    f2_3.Size=UDim2.new(0,6,1,0);
+    f2_3.Position=UDim2.new(1,-6,0,0);
+    f2_3.BorderSizePixel=0;
+    f2_3.BackgroundColor3=color1;
+    f1_3.Name='f1';
+    f1_3.Parent=DateFrame;
+    f1_3.Size=UDim2.new(1,0,0,6);
+    f1_3.Position=UDim2.new(0,0,1,-6);
+    f1_3.BorderSizePixel=0;
+    f1_3.BackgroundColor3=color1;
+    UICorner_3.Name='UICorner';
+    UICorner_3.Parent=DateFrame;
+    UICorner_3.CornerRadius=UDim.new(0,6)local s,f,m,t,l=tick(),{},math.fmod,tonumber;
+    local function o(n)return n..(({'st','nd','rd'})[m((m((n+90),100)-10),10)]or'th')end;
+    Connections[#Connections+1]={Name='Timer',Function=RunService.Heartbeat:Connect(function()
+        Time.Text=os.date'%I:%M:%S'Date.Text=os.date'%a, %b '..o(t(os.date'%d'))
+        l=tick()for i=#f,1,-1 do f[i+1]=(f[i]>=l-1)and f[i]or nil;end;
+        f[1]=l;FPS.Text=MFloor((tick()-s>=1 and#f)or(#f/(tick()-s)));
+    end)};
+    Connections[#Connections+1]={Name='Stats',Function=game.CoreGui.ChildRemoved:Connect(function(b)
+        if b.Name=='Stats'then 
+            connection:Disconnect();
+            connection=nil;
+            connection2:Disconnect();
+            connection2=nil;
+        end;
+    end)};
+end;Ancestor:Clock();
+
+function Ancestor:ClientMayLoadGUI()
+pcall(function()game.CoreGui.GUI:Destroy()end)
+
+local color1=Color3.fromRGB(15,15,15);
+local color2=Color3.fromRGB(255,255,255);
+
+local GUI=Instance.new('ScreenGui');
+local GUIFrame=Instance.new('Frame');
+local Text=Instance.new('TextLabel');
+local UICorner=Instance.new('UICorner');
+GUI.Name='GUI';
+GUI.Parent=game.CoreGui;
+GUI.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;
+GUIFrame.Name='FPSFrame';
+GUIFrame.Parent=GUI;
+GUIFrame.Size=UDim2.new(0,140,0,20);
+GUIFrame.AnchorPoint=Vector2.new(.5,.5)
+GUIFrame.Position=UDim2.new(.03,0,.99,0);
+GUIFrame.BorderSizePixel=0;
+GUIFrame.BackgroundColor3=color1;
+UICorner.Name='UICorner';
+UICorner.Parent=GUIFrame;
+UICorner.CornerRadius=UDim.new(0,6);
+Text.Name='Text';
+Text.Parent=GUIFrame;
+Text.TextWrapped=true;
+Text.ZIndex=2;
+Text.BorderSizePixel=0;
+Text.BackgroundColor3=Color3.fromRGB(255,255,255);
+Text.Size=UDim2.new(1,-2,1,0);
+Text.TextSize=14.000;
+Text.Text='';
+Text.TextColor3=color2;
+Text.Font=Enum.Font.GothamSemibold;
+Text.Position=UDim2.new(0,2,0,0);
+Text.BackgroundTransparency=1.000;
+Connections[#Connections+1]={Name='ClientMayLoadGUI',Function=RunService.Heartbeat:Connect(function()
+    local success=Client_May_Load:InvokeServer(LP);
+        if success then
+            Text.Text='You Can Load';
+        else 
+            Text.Text='You Cannot Load';
+        end;
+    end)};
+end;Ancestor:ClientMayLoadGUI();
 
 function Ancestor:DupeMoney()
     if Ancestor.MoneyDuping then 
