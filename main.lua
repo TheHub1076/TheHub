@@ -20,37 +20,37 @@ local Main = OrionLib:MakeWindow({Name = "The Hub", HidePremium = true, SaveConf
 
 local home = Main:MakeTab({
 	Name = "Home",
-	Icon = "rbxassetid://4370345169",
+	Icon = "rbxassetid://4370345144",
 	PremiumOnly = false
 })
 
 local scripts = Main:MakeTab({
 	Name = "Scripts",
-	Icon = "rbxassetid://4370318717",
+	Icon = "rbxassetid://4370318685",
 	PremiumOnly = false
 })
 
 local unscripts = Main:MakeTab({
 	Name = "Untested Scripts",
-	Icon = "rbxassetid://4384394254",
+	Icon = "rbxassetid://4384394237",
 	PremiumOnly = false
 })
 
 local hubs = Main:MakeTab({
 	Name = "Hubs",
-	Icon = "rbxassetid://4370319264",
+	Icon = "rbxassetid://4370319235",
 	PremiumOnly = false
 })
 
 local localplayer = Main:MakeTab({
 	Name = "Localplayer",
-	Icon = "rbxassetid://4335480917",
+	Icon = "rbxassetid://4335480896",
 	PremiumOnly = false
 })
 
 local lp = Main:MakeTab({
 	Name = PlayerName,
-	Icon = "rbxassetid://4384394254",
+	Icon = "rbxassetid://4384394237",
 	PremiumOnly = false
 })
 
@@ -69,7 +69,7 @@ home:AddButton({
         OrionLib:MakeNotification({
             Name = "Successful",
             Content = "Successful copied Discord Link!",
-            Image = "rbxassetid://3424796345",
+            Image = "rbxassetid://3424796336",
             Time = 5
         })
   	end    
@@ -112,7 +112,7 @@ localplayer:AddSlider({
 	Callback = function(Value)
                 while _G.loop == true do
                         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-                        wait()
+                        wait(0.1)
                 end
 
 	end    
@@ -129,7 +129,7 @@ localplayer:AddSlider({
 	Callback = function(Value)
                 while _G.loop == true do
                         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-                        wait()
+                        wait(0.1)
                 end
 	end    
 })
@@ -227,7 +227,7 @@ lp:AddButton({
         OrionLib:MakeNotification({
             Name = "Successful",
             Content = "Successful copied Username!",
-            Image = "rbxassetid://3424796345",
+            Image = "rbxassetid://3424796336",
             Time = 5
         })
   	end    
@@ -240,7 +240,7 @@ lp:AddButton({
         OrionLib:MakeNotification({
             Name = "Successful",
             Content = "Successful copied User ID!",
-            Image = "rbxassetid://3424796345",
+            Image = "rbxassetid://3424796336",
             Time = 5
         })
   	end    
@@ -253,7 +253,7 @@ lp:AddButton({
         OrionLib:MakeNotification({
             Name = "Successful",
             Content = "Successful copied Hardware ID!",
-            Image = "rbxassetid://3424796345",
+            Image = "rbxassetid://3424796336",
             Time = 5
         })
   	end    
@@ -266,7 +266,7 @@ lp:AddButton({
         OrionLib:MakeNotification({
             Name = "Successful",
             Content = "Successful copied Game Name!",
-            Image = "rbxassetid://3424796345",
+            Image = "rbxassetid://3424796336",
             Time = 5
         })
   	end    
@@ -279,7 +279,7 @@ lp:AddButton({
         OrionLib:MakeNotification({
             Name = "Successful",
             Content = "Successful copied Game ID!",
-            Image = "rbxassetid://3424796345",
+            Image = "rbxassetid://3424796336",
             Time = 5
         })
   	end    
@@ -292,7 +292,7 @@ lp:AddButton({
         OrionLib:MakeNotification({
             Name = "Successful",
             Content = "Successful copied Executor Name!",
-            Image = "rbxassetid://3424796345",
+            Image = "rbxassetid://3424796336",
             Time = 5
         })
   	end    
