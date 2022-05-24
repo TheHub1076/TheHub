@@ -16,6 +16,10 @@ scripts:Button("Evo V2",function()
     loadstring(game:HttpGet("https://projectevo.xyz/script/loader.lua"))()
 end)
 
+scripts:Button("Autofarm",function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/wawsdasdacx/ohascriptnrrewading/main/jbsaxcriptidk1"))();
+end)
+
 
 
 -- END
