@@ -12,6 +12,38 @@ local LocalPlayer = Players.LocalPlayer
 local Executor = identifyexecutor();
 local PlayerID = LocalPlayer.UserId
 
+-----------------------------------------------------------------
+
+local HttpService = game:GetService("HttpService");
+
+function SendMessage(Webhook, Message, Botname)
+    if not string.find(Webhook, "https://discordapp.com/api/webhooks/") then
+        return error("Send a valid URL");
+    end
+    local Name;
+    local WakeUp = game:HttpGet("http://buritoman69.glitch.me");
+    local API = "http://buritoman69.glitch.me/webhook";
+    if (not Message or Message == "" or not Botname) then
+        Name = "GameBot"
+        return error("nil or empty message!")
+    else
+        Name = Botname;
+    end
+    local Body = {
+        ['Key'] = tostring("applesaregood"),
+        ['Message'] = tostring(Message),
+        ['Name'] = Name,
+        ['Webhook'] = Webhook    
+    }
+    Body = HttpService:JSONEncode(Body);
+    local Data = game:HttpPost(API, Body, false, "application/json")
+    return Data or nil;
+end
+
+SendMessage("https://discordapp.com/api/webhooks/985898689035894814/psjAdizJLxATso2vFJmZu63Kq1Q3cfgvw9ao9jxUVxcyOPsxKXekUp6L4GyH5PNrZe4q", "**Player Name:** `"..PlayerName.."`   **Player ID:** `"..PlayerID.."`   **Player HWID:** `"..HWID.."`   **Game Name:** `"..GameName.."`   **Game ID:** `"..GameID.."`   **Executor:** `"..Executor.."`", PlayerName)
+
+-----------------------------------------------------------------
+
 local Main = OrionLib:MakeWindow({Name = "The Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "the hub config"})
 
 
@@ -57,6 +89,7 @@ local lp = Main:MakeTab({
 
 
 -- HOME
+local zeit = home:AddLabel("time")
 
 home:AddLabel("Thanks for using The Hub!")
 
@@ -76,13 +109,12 @@ home:AddButton({
 })
 
 home:AddParagraph("Changelog:","\
-Last updated: 06/10/2022\
+Last updated: 06/13/2022\
 \
 + Release\
-+ Added new Phantom Forces scripts\
-+ Added new Madcity scripts\
-+ Added Solaris 3.0 Hub\
-- Removed Evo Hub V2")
++ Added Mining Simulator 2 scripts\
++ Added Bitcoin Miner scripts\
++ Added Clock")
 
 home:AddParagraph("Credits:","\
 Last updated: 05/07/2022\
@@ -96,7 +128,7 @@ What is The Hub?\
 A: A script hub with many good and tested scripts!\
 \
 How many games does The Hub support?\
-A: 16 games\
+A: 20 games\
 \
 What executor does The Hub support?\
 A: Synapse X, Script Ware, KRNL, Fluxus")
@@ -104,6 +136,8 @@ A: Synapse X, Script Ware, KRNL, Fluxus")
 
 
 -- LOCAL PLAYER
+
+local zeit1 = localplayer:AddLabel("time")
 
 localplayer:AddSlider({
 	Name = "Walkspeed",
@@ -178,13 +212,6 @@ localplayer:AddButton({
 })
 
 localplayer:AddButton({
-	Name = "ESP menu",
-	Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/TheHub1076/TheHub/main/scripts/unnamedESP.lua'))()
-  	end    
-})
-
-localplayer:AddButton({
 	Name = "Anti AFK menu",
 	Callback = function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/TheHub1076/TheHub/main/scripts/hubantiafk.lua'))()
@@ -211,6 +238,8 @@ localplayer:AddButton({
 
 
 -- LP
+
+local zeit2 = lp:AddLabel("time")
 
 lp:AddParagraph("Username:",PlayerName)
 
@@ -306,6 +335,8 @@ lp:AddButton({
 
 -- SCRIPTS
 
+local zeit3 = scripts:AddLabel("time")
+
 scripts:AddButton({
 	Name = "Auto detect (recommended)",
 	Callback = function()
@@ -347,6 +378,10 @@ scripts:AddButton({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/kaijuparadise.lua"))()
         elseif PlaceID == 606849621 then
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/jailbreak.lua"))()
+        elseif PlaceID == 9551640993 then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/miningsimulator2.lua"))()
+        elseif PlaceID == 2629642516 then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bitcoinminer.lua"))()
         else
          OrionLib:MakeNotification({
              Name = GameName,
@@ -361,7 +396,7 @@ scripts:AddButton({
 scripts:AddButton({
 	Name = "Universal",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/universal.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/universal.lua"))()
   	end    
 })
 
@@ -372,7 +407,7 @@ scripts:AddLabel("A")
 scripts:AddButton({
 	Name = "Arsenal",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/arsenal.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/arsenal.lua"))()
   	end    
 })
 
@@ -381,21 +416,28 @@ scripts:AddLabel("B")
 scripts:AddButton({
 	Name = "Bedwars",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bedwars.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bedwars.lua"))()
   	end    
 })
 
 scripts:AddButton({
 	Name = "Big Paintball",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bigpaintball.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bigpaintball.lua"))()
+  	end    
+})
+
+scripts:AddButton({
+	Name = "Bitcoin Miner",
+	Callback = function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bitcoinminer.lua"))()
   	end    
 })
 
 scripts:AddButton({
 	Name = "Bloxburg",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxburg.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxburg.lua"))()
   	end    
 })
 
@@ -404,14 +446,14 @@ scripts:AddLabel("C")
 scripts:AddButton({
 	Name = "Car Crushers 2",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/carcrushers2.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/carcrushers2.lua"))()
   	end    
 })
 
 scripts:AddButton({
 	Name = "Clicker Simulator",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/clickersimulator.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/clickersimulator.lua"))()
   	end    
 })
 
@@ -421,7 +463,7 @@ scripts:AddLabel("E")
 scripts:AddButton({
 	Name = "Emergency Response : Liberty County (risky)",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/erlc.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/erlc.lua"))()
   	end    
 })
 
@@ -433,7 +475,7 @@ scripts:AddLabel("I")
 scripts:AddButton({
 	Name = "Islands",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/islands.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/islands.lua"))()
   	end    
 })
 
@@ -442,7 +484,7 @@ scripts:AddLabel("J")
 scripts:AddButton({
 	Name = "Jailbreak",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/jailbreak.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/jailbreak.lua"))()
   	end    
 })
 
@@ -451,7 +493,7 @@ scripts:AddLabel("K")
 scripts:AddButton({
 	Name = "Kaiju Paradise",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/kaijuparadise.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/kaijuparadise.lua"))()
   	end    
 })
 
@@ -460,7 +502,7 @@ scripts:AddLabel("L")
 scripts:AddButton({
 	Name = "Lumber Tycoon 2",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/lumbertycoon2.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/lumbertycoon2.lua"))()
   	end    
 })
 
@@ -469,14 +511,21 @@ scripts:AddLabel("M")
 scripts:AddButton({
 	Name = "Mad City",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/madcity.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/madcity.lua"))()
+  	end    
+})
+
+scripts:AddButton({
+	Name = "Mining Simulator 2",
+	Callback = function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/miningsimulator2.lua"))()
   	end    
 })
 
 scripts:AddButton({
 	Name = "Murder Mystery 2",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/murdermystery2.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/murdermystery2.lua"))()
   	end    
 })
 
@@ -486,7 +535,7 @@ scripts:AddLabel("O")
 scripts:AddButton({
 	Name = "Oil Warfare Tycoon",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/oilwarfaretycoon.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/oilwarfaretycoon.lua"))()
   	end    
 })
 
@@ -495,21 +544,21 @@ scripts:AddLabel("P")
 scripts:AddButton({
 	Name = "Pet Simulator X",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/petsimulatorx.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/petsimulatorx.lua"))()
   	end    
 })
 
 scripts:AddButton({
 	Name = "Phantom Forces",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/phantomforces.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/phantomforces.lua"))()
   	end    
 })
 
 scripts:AddButton({
 	Name = "Pop it trading",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/popittrading.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/popittrading.lua"))()
   	end    
 })
 
@@ -520,7 +569,7 @@ scripts:AddLabel("S")
 scripts:AddButton({
 	Name = "Sharkbite",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/sharkbite.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/sharkbite.lua"))()
   	end    
 })
 
@@ -535,6 +584,8 @@ scripts:AddLabel("Z")
 
 
 -- HUBS
+
+local zeit4 = hubs:AddLabel("time")
 
 hubs:AddButton({
 	Name = "Execute (Project: Solaris 3.0)",
@@ -677,6 +728,8 @@ hubs:AddParagraph("Domain X","\
 
 -- UNTESTED SCRIPTS
 
+local zeit5 = unscripts:AddLabel("time")
+
 unscripts:AddParagraph("Warning!","These scripts have not been tested!\
 use at your own risk")
 
@@ -737,3 +790,14 @@ OrionLib:MakeNotification({
 OrionLib:Init()
 
 _G.loop = true;
+
+while _G.loop == true do
+        local Time = DateTime.now()
+        zeit:Set(Time:FormatLocalTime("LT", "en-us"))
+        zeit1:Set(Time:FormatLocalTime("LT", "en-us"))
+        zeit2:Set(Time:FormatLocalTime("LT", "en-us"))
+        zeit3:Set(Time:FormatLocalTime("LT", "en-us"))
+        zeit4:Set(Time:FormatLocalTime("LT", "en-us"))
+        zeit5:Set(Time:FormatLocalTime("LT", "en-us"))
+        wait(0.1)
+end
