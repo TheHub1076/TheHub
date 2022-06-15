@@ -8,7 +8,7 @@ local scripts = main:CreateFolder("Scripts")
 
 -- SCRIPTS
 
-scripts:Button("No Name",function()
+scripts:Button("No Name (Key)",function()
     loadstring(game:HttpGet"https://thedragonslayer2.github.io")()
 end)
 
