@@ -375,7 +375,7 @@ scripts:AddButton({
             Image = "rbxassetid://8950611017",
             Time = 5
          })
-      elseif PlaceID 5244411056 == then
+      elseif PlaceID == 5244411056 then
          loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxybingo.lua"))()
       else
          OrionLib:MakeNotification({
@@ -398,12 +398,12 @@ scripts:AddButton({
 scripts:AddLabel("Scripts from A-Z:")
 
 --scripts:AddDropdown({
-	Name = "Select game",
-	Default = "Select",
-	Options = {"Select", "Arsenal", "Bedwars", "Big Paintball", "Bitcoin Miner", "Bloxburg", "Car Crushers 2", "Clicker Simulator", "Emergency Response (risky)", "Idiotic Investing", "Islands", "Jailbreak", "Kaiju Paradise", "Lumber Tycoon 2", "Mad City", "Mining Simulator 2", "Murder Mystery 2", "Oil Warfare Tycoon", "Pet Simulator X", "Phantom Forces", "Pop it Trading", "Sharkbite"},
-	Callback = function(Value)
-		print(Value)
-	end    
+--	Name = "Select game",
+--	Default = "Select",
+--	Options = {"Select", "Arsenal", "Bedwars", "Big Paintball", "Bitcoin Miner", "Bloxburg", "Car Crushers 2", "Clicker Simulator", "Emergency Response (risky)", "Idiotic Investing", "Islands", "Jailbreak", "Kaiju Paradise", "Lumber Tycoon 2", "Mad City", "Mining Simulator 2", "Murder Mystery 2", "Oil Warfare Tycoon", "Pet Simulator X", "Phantom Forces", "Pop it Trading", "Sharkbite"},
+--	Callback = function(Value)
+--		print(Value)
+--	end    
 --})
 
 local a = scripts:AddSection({
@@ -901,7 +901,7 @@ settings:AddToggle({
                Image = "rbxassetid://8950611017",
                Time = 5
             })
-         elseif PlaceID 5244411056 == then
+         elseif PlaceID == 5244411056 then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxybingo.lua"))()
          else
             OrionLib:MakeNotification({
