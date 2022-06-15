@@ -1,3 +1,5 @@
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/TheHub1076/TheHub/main/scripts/welcome.lua')))()
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/TheHub1076/TheHub/main/Orion%20libary.lua')))()
 
 _G.loop = false;
@@ -12,11 +14,7 @@ local LocalPlayer = Players.LocalPlayer
 local Executor = identifyexecutor();
 local PlayerID = LocalPlayer.UserId
 
------------------------------------------------------------------
 
-
-
------------------------------------------------------------------
 
 local Main = OrionLib:MakeWindow({Name = "The Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "the hub config"})
 
@@ -60,9 +58,16 @@ local lp = Main:MakeTab({
 	PremiumOnly = false
 })
 
+local settings = Main:MakeTab({
+	Name = "Settings",
+	Icon = "rbxassetid://3605022185",
+	PremiumOnly = false
+})
+
 
 
 -- HOME
+
 local zeit = home:AddLabel("time")
 
 home:AddLabel("Thanks for using The Hub!")
@@ -82,27 +87,33 @@ home:AddButton({
   	end    
 })
 
-home:AddParagraph("Changelog:","\
-Last updated: 06/13/2022\
+local info = home:AddSection({
+	Name = "Information"
+})
+
+info:AddParagraph("Changelog:","\
+Last updated: 06/15/2022\
 \
 + Release\
-+ Added Mining Simulator 2 scripts\
-+ Added Bitcoin Miner scripts\
-+ Added Clock")
++ Added Idiotic Investing script\
++ Added Bloxy Bingo script\
++ Added Welcome screen\
++ Added Sections\
++ Added Settings\
+* Fixed not executing with KRNL")
 
-home:AddParagraph("Credits:","\
+info:AddParagraph("Credits:","\
 Last updated: 05/07/2022\
 \
 Owner: Jkgamer1_0#1076\
 Tester: Jsgamer1_0, Jason_azaza#2022\
 UI libary: shlex#0001, dawid#7205")
-
-home:AddParagraph("FAQ:","\
+info:AddParagraph("FAQ:","\
 What is The Hub?\
 A: A script hub with many good and tested scripts!\
 \
 How many games does The Hub support?\
-A: 20 games\
+A: 22 games\
 \
 What executor does The Hub support?\
 A: Synapse X, Script Ware, KRNL, Fluxus")
@@ -295,13 +306,13 @@ lp:AddButton({
 lp:AddButton({
 	Name = "Copy Executor Name",
 	Callback = function()
-        setclipboard(Executor)
-        OrionLib:MakeNotification({
+      setclipboard(Executor)
+         OrionLib:MakeNotification({
             Name = "Successful",
             Content = "Successful copied Executor Name!",
             Image = "rbxassetid://3424796336",
             Time = 5
-        })
+         })
   	end    
 })
 
@@ -314,56 +325,66 @@ local zeit3 = scripts:AddLabel("time")
 scripts:AddButton({
 	Name = "Auto detect (recommended)",
 	Callback = function()
-        local PlaceID = game.PlaceId
+         local PlaceID = game.PlaceId
 
-        if PlaceID == 286090429 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/arsenal.lua"))()
-        elseif PlaceID == 6872265039 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bedwars.lua"))()
-        elseif PlaceID == 3527629287 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bigpaintball.lua"))()
-        elseif PlaceID == 185655149 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxburg.lua"))()
-        elseif PlaceID == 654732683 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/carcrushers2.lua"))()
-        elseif PlaceID == 7560156054 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/clickersimulator.lua"))()
-        elseif PlaceID == 4872321990 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/islands.lua"))()
-        elseif PlaceID == 13822889 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/lumbertycoon2.lua"))()
-        elseif PlaceID == 1224212277 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/madcity.lua"))()
-        elseif PlaceID == 142823291 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/murdermystery2.lua"))()
-        elseif PlaceID == 6284583030 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/petsimulatorx.lua"))()
-        elseif PlaceID == 292439477 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/phantomforces.lua"))()
-        elseif PlaceID == 7346416636 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/popittrading.lua"))()
-        elseif PlaceID == 734159876 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/sharkbite.lua"))()
-        elseif PlaceID == 4639625707 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/oilwarfaretycoon.lua"))()
-        elseif PlaceID == 2534724415 then
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/erlc.lua"))()
-        elseif PlaceID == 6456351776 then
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/kaijuparadise.lua"))()
-        elseif PlaceID == 606849621 then
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/jailbreak.lua"))()
-        elseif PlaceID == 9551640993 then
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/miningsimulator2.lua"))()
-        elseif PlaceID == 2629642516 then
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bitcoinminer.lua"))()
-        else
+      if PlaceID == 286090429 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/arsenal.lua"))()
+      elseif PlaceID == 6872265039 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bedwars.lua"))()
+      elseif PlaceID == 3527629287 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bigpaintball.lua"))()
+      elseif PlaceID == 185655149 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxburg.lua"))()
+      elseif PlaceID == 654732683 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/carcrushers2.lua"))()
+      elseif PlaceID == 7560156054 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/clickersimulator.lua"))()
+      elseif PlaceID == 4872321990 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/islands.lua"))()
+      elseif PlaceID == 13822889 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/lumbertycoon2.lua"))()
+      elseif PlaceID == 1224212277 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/madcity.lua"))()
+      elseif PlaceID == 142823291 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/murdermystery2.lua"))()
+      elseif PlaceID == 6284583030 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/petsimulatorx.lua"))()
+      elseif PlaceID == 292439477 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/phantomforces.lua"))()
+      elseif PlaceID == 7346416636 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/popittrading.lua"))()
+      elseif PlaceID == 734159876 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/sharkbite.lua"))()
+      elseif PlaceID == 4639625707 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/oilwarfaretycoon.lua"))()
+      elseif PlaceID == 2534724415 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/erlc.lua"))()
+      elseif PlaceID == 6456351776 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/kaijuparadise.lua"))()
+      elseif PlaceID == 606849621 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/jailbreak.lua"))()
+      elseif PlaceID == 9551640993 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/miningsimulator2.lua"))()
+      elseif PlaceID == 2629642516 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bitcoinminer.lua"))()
+      elseif PlaceID == 6700823483 then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/idioticinvesting.lua"))()
          OrionLib:MakeNotification({
-             Name = GameName,
-             Content = "is not supported",
-             Image = "rbxassetid://4400699701",
-             Time = 5
+            Name = "Information",
+            Content = "Press F9 to see the price",
+            Image = "rbxassetid://8950611017",
+            Time = 5
          })
-       end
+      elseif PlaceID 5244411056 == then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxybingo.lua"))()
+      else
+         OrionLib:MakeNotification({
+            Name = GameName,
+            Content = "is not supported",
+            Image = "rbxassetid://4400699701",
+            Time = 5
+         })
+      end
   	end    
 })
 
@@ -376,184 +397,265 @@ scripts:AddButton({
 
 scripts:AddLabel("Scripts from A-Z:")
 
-scripts:AddLabel("A")
+--scripts:AddDropdown({
+	Name = "Select game",
+	Default = "Select",
+	Options = {"Select", "Arsenal", "Bedwars", "Big Paintball", "Bitcoin Miner", "Bloxburg", "Car Crushers 2", "Clicker Simulator", "Emergency Response (risky)", "Idiotic Investing", "Islands", "Jailbreak", "Kaiju Paradise", "Lumber Tycoon 2", "Mad City", "Mining Simulator 2", "Murder Mystery 2", "Oil Warfare Tycoon", "Pet Simulator X", "Phantom Forces", "Pop it Trading", "Sharkbite"},
+	Callback = function(Value)
+		print(Value)
+	end    
+--})
 
-scripts:AddButton({
+local a = scripts:AddSection({
+	Name = "A"
+})
+
+a:AddButton({
 	Name = "Arsenal",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/arsenal.lua"))()
   	end    
 })
 
-scripts:AddLabel("B")
+local b = scripts:AddSection({
+	Name = "B"
+})
 
-scripts:AddButton({
+b:AddButton({
 	Name = "Bedwars",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bedwars.lua"))()
   	end    
 })
 
-scripts:AddButton({
+b:AddButton({
 	Name = "Big Paintball",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bigpaintball.lua"))()
   	end    
 })
 
-scripts:AddButton({
+b:AddButton({
 	Name = "Bitcoin Miner",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bitcoinminer.lua"))()
   	end    
 })
 
-scripts:AddButton({
+b:AddButton({
 	Name = "Bloxburg",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxburg.lua"))()
   	end    
 })
 
-scripts:AddLabel("C")
+b:AddButton({
+	Name = "Bloxy Bingo",
+	Callback = function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxburg.lua"))()
+  	end    
+})
 
-scripts:AddButton({
+local c = scripts:AddSection({
+	Name = "C"
+})
+
+c:AddButton({
 	Name = "Car Crushers 2",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/carcrushers2.lua"))()
   	end    
 })
 
-scripts:AddButton({
+c:AddButton({
 	Name = "Clicker Simulator",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/clickersimulator.lua"))()
   	end    
 })
 
-scripts:AddLabel("D")
-scripts:AddLabel("E")
+local d = scripts:AddSection({
+	Name = "D"
+})
+local e = scripts:AddSection({
+	Name = "E"
+})
 
-scripts:AddButton({
+e:AddButton({
 	Name = "Emergency Response : Liberty County (risky)",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/erlc.lua"))()
   	end    
 })
 
-scripts:AddLabel("F")
-scripts:AddLabel("G")
-scripts:AddLabel("H")
-scripts:AddLabel("I")
+local f = scripts:AddSection({
+	Name = "F"
+})
+local g = scripts:AddSection({
+	Name = "G"
+})
+local h = scripts:AddSection({
+	Name = "H"
+})
+local i = scripts:AddSection({
+	Name = "I"
+})
 
-scripts:AddButton({
+i:AddButton({
+	Name = "Idiotic Investing",
+	Callback = function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/idioticinvesting.lua"))()
+                OrionLib:MakeNotification({
+                  Name = "Information",
+                  Content = "Press F9 to see the price",
+                  Image = "rbxassetid://8950611017",
+                  Time = 5
+               })
+  	end    
+})
+
+i:AddButton({
 	Name = "Islands",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/islands.lua"))()
   	end    
 })
 
-scripts:AddLabel("J")
+local j = scripts:AddSection({
+	Name = "J"
+})
 
-scripts:AddButton({
+j:AddButton({
 	Name = "Jailbreak",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/jailbreak.lua"))()
   	end    
 })
 
-scripts:AddLabel("K")
+local k = scripts:AddSection({
+	Name = "K"
+})
 
-scripts:AddButton({
+k:AddButton({
 	Name = "Kaiju Paradise",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/kaijuparadise.lua"))()
   	end    
 })
 
-scripts:AddLabel("L")
+local l = scripts:AddSection({
+	Name = "L"
+})
 
-scripts:AddButton({
+l:AddButton({
 	Name = "Lumber Tycoon 2",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/lumbertycoon2.lua"))()
   	end    
 })
 
-scripts:AddLabel("M")
+local m = scripts:AddSection({
+	Name = "M"
+})
 
-scripts:AddButton({
+m:AddButton({
 	Name = "Mad City",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/madcity.lua"))()
   	end    
 })
 
-scripts:AddButton({
+m:AddButton({
 	Name = "Mining Simulator 2",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/miningsimulator2.lua"))()
   	end    
 })
 
-scripts:AddButton({
+m:AddButton({
 	Name = "Murder Mystery 2",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/murdermystery2.lua"))()
   	end    
 })
 
-scripts:AddLabel("N")
-scripts:AddLabel("O")
+local n = scripts:AddSection({
+	Name = "N"
+})
+local o = scripts:AddSection({
+	Name = "O"
+})
 
-scripts:AddButton({
+o:AddButton({
 	Name = "Oil Warfare Tycoon",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/oilwarfaretycoon.lua"))()
   	end    
 })
 
-scripts:AddLabel("P")
+local p = scripts:AddSection({
+	Name = "P"
+})
 
-scripts:AddButton({
+p:AddButton({
 	Name = "Pet Simulator X",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/petsimulatorx.lua"))()
   	end    
 })
 
-scripts:AddButton({
+p:AddButton({
 	Name = "Phantom Forces",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/phantomforces.lua"))()
   	end    
 })
 
-scripts:AddButton({
+p:AddButton({
 	Name = "Pop it trading",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/popittrading.lua"))()
   	end    
 })
 
-scripts:AddLabel("Q")
-scripts:AddLabel("R")
-scripts:AddLabel("S")
+local q = scripts:AddSection({
+	Name = "Q"
+})
+local r = scripts:AddSection({
+	Name = "R"
+})
+local s = scripts:AddSection({
+	Name = "S"
+})
 
-scripts:AddButton({
+s:AddButton({
 	Name = "Sharkbite",
 	Callback = function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/sharkbite.lua"))()
   	end    
 })
 
-scripts:AddLabel("T")
-scripts:AddLabel("U")
-scripts:AddLabel("V")
-scripts:AddLabel("W")
-scripts:AddLabel("X")
-scripts:AddLabel("Y")
-scripts:AddLabel("Z")
+local t = scripts:AddSection({
+	Name = "T"
+})
+local u = scripts:AddSection({
+	Name = "U"
+})
+local v = scripts:AddSection({
+	Name = "V"
+})
+local w = scripts:AddSection({
+	Name = "W"
+})
+local x = scripts:AddSection({
+	Name = "X"
+})
+local y = scripts:AddSection({
+	Name = "Y"
+})
+local z = scripts:AddSection({
+	Name = "Z"
+})
 
 
 
@@ -561,14 +663,18 @@ scripts:AddLabel("Z")
 
 local zeit4 = hubs:AddLabel("time")
 
-hubs:AddButton({
-	Name = "Execute (Project: Solaris 3.0)",
+local solaris = hubs:AddSection({
+	Name = "Solaris 3.0"
+})
+
+solaris:AddButton({
+	Name = "Execute (Solaris 3.0)",
 	Callback = function()
-        loadstring(game:HttpGet('https://solarishub.net/script.lua',true))()
+      loadstring(game:HttpGet('https://solarishub.net/script.lua',true))()
   	end    
 })
 
-hubs:AddParagraph("Project: Solaris 3.0","\
+solaris:AddParagraph("Solaris 3.0","\
  Supported games:\
    - Phantom Forces\
    - Arsenal\
@@ -576,14 +682,18 @@ hubs:AddParagraph("Project: Solaris 3.0","\
    - Sonic Speed Simulator\
    - SCP 3008")
 
-hubs:AddButton({
+local masterhub = hubs:AddSection({
+   Name = "Master Hub"
+})
+
+masterhub:AddButton({
 	Name = "Execute (Master Hub)",
 	Callback = function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/destylol/masterhubv311/itachi/Main.lua"))()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/destylol/masterhubv311/itachi/Main.lua"))()
   	end    
 })
 
-hubs:AddParagraph("Master Hub","\
+masterhub:AddParagraph("Master Hub","\
  Supported games:\
    - Sonic Speed Simulator\
    - Pet Simulator X\
@@ -596,14 +706,18 @@ hubs:AddParagraph("Master Hub","\
    - Clicker Simulator\
    - Lumber Tycoon 2")
 
-hubs:AddButton({
+local soggyhub = hubs:AddSection({
+    Name = "Soggy Hub"
+})
+
+soggyhub:AddButton({
 	Name = "Execute (Soggy Hub)",
 	Callback = function()
-                loadstring(game:HttpGet('https://raw.githubusercontent.com/SunkenMuch/Soggyware/main/Main',true))()
+      loadstring(game:HttpGet('https://raw.githubusercontent.com/SunkenMuch/Soggyware/main/Main',true))()
   	end    
 })
 
-hubs:AddParagraph("Soggy Hub","\
+soggyhub:AddParagraph("Soggy Hub","\
  Supported games:\
    - Anime Dimensions\
    - Rebirth Champions X\
@@ -645,15 +759,18 @@ hubs:AddParagraph("Soggy Hub","\
    - Multiverse Simulator\
    - Goal Kicker Simulator")
 
+local domainx = hubs:AddSection({
+   Name = "Domain X"
+})
 
-hubs:AddButton({
+domainx:AddButton({
 	Name = "Execute (Domain X)",
 	Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/DomainX/main/source',true))()
+      loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/DomainX/main/source',true))()
   	end    
 })
 
-hubs:AddParagraph("Domain X","\
+domainx:AddParagraph("Domain X","\
  Supported games:\
    - Bedwars\
    - Greenville\
@@ -723,6 +840,83 @@ unscripts:AddButton({
 
 
 
+-- SETTINGS
+
+local zeit6 = settings:AddLabel("time")
+
+settings:AddToggle({
+	Name = "Toggle always auto detect",
+	Default = false,
+   Save = true,
+   Flag = "always auto detect",
+	Callback = function(Value)
+      if Value == true then
+         local PlaceID = game.PlaceId
+
+         if PlaceID == 286090429 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/arsenal.lua"))()
+         elseif PlaceID == 6872265039 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bedwars.lua"))()
+         elseif PlaceID == 3527629287 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bigpaintball.lua"))()
+         elseif PlaceID == 185655149 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxburg.lua"))()
+         elseif PlaceID == 654732683 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/carcrushers2.lua"))()
+         elseif PlaceID == 7560156054 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/clickersimulator.lua"))()
+         elseif PlaceID == 4872321990 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/islands.lua"))()
+         elseif PlaceID == 13822889 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/lumbertycoon2.lua"))()
+         elseif PlaceID == 1224212277 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/madcity.lua"))()
+         elseif PlaceID == 142823291 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/murdermystery2.lua"))()
+         elseif PlaceID == 6284583030 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/petsimulatorx.lua"))()
+         elseif PlaceID == 292439477 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/phantomforces.lua"))()
+         elseif PlaceID == 7346416636 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/popittrading.lua"))()
+         elseif PlaceID == 734159876 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/sharkbite.lua"))()
+         elseif PlaceID == 4639625707 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/oilwarfaretycoon.lua"))()
+         elseif PlaceID == 2534724415 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/erlc.lua"))()
+         elseif PlaceID == 6456351776 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/kaijuparadise.lua"))()
+         elseif PlaceID == 606849621 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/jailbreak.lua"))()
+         elseif PlaceID == 9551640993 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/miningsimulator2.lua"))()
+         elseif PlaceID == 2629642516 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bitcoinminer.lua"))()
+         elseif PlaceID == 6700823483 then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/idioticinvesting.lua"))()
+            OrionLib:MakeNotification({
+               Name = "Information",
+               Content = "Press F9 to see the price",
+               Image = "rbxassetid://8950611017",
+               Time = 5
+            })
+         elseif PlaceID 5244411056 == then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxybingo.lua"))()
+         else
+            OrionLib:MakeNotification({
+               Name = GameName,
+               Content = "is not supported",
+               Image = "rbxassetid://4400699701",
+               Time = 5
+            })
+         end
+      end
+   end
+})
+
+
+
 -----------------------------------------------------------------
 
 OrionLib:MakeNotification({
@@ -773,5 +967,6 @@ while _G.loop == true do
         zeit3:Set("Time: "..Time:FormatLocalTime("LT", "en-us"))
         zeit4:Set("Time: "..Time:FormatLocalTime("LT", "en-us"))
         zeit5:Set("Time: "..Time:FormatLocalTime("LT", "en-us"))
+        zeit6:Set("Time: "..Time:FormatLocalTime("LT", "en-us"))
         wait(0.1)
 end
