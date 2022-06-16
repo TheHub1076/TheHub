@@ -452,7 +452,7 @@ b:AddButton({
 b:AddButton({
 	Name = "Bloxy Bingo",
 	Callback = function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxburg.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheHub1076/TheHub/main/games/bloxybingo.lua"))()
   	end    
 })
 
